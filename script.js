@@ -1,3 +1,38 @@
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('close-menu');
+
+  // Open menu
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden'; // prevent scroll behind menu
+  });
+
+  // Close menu
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  // Close when clicking any link
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close when clicking outside (optional enhancement)
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
 // Hero Carousel – auto-play only
 let idx = 0;
 const slides = document.querySelectorAll('.hero-slide');
@@ -97,3 +132,6 @@ window.addEventListener('scroll', () => {
     backToTop.classList.remove('visible');
   }
 });
+
+
+
